@@ -8,3 +8,5 @@ For N modes, the estimate functions return a list of 3N - 1 numbers
 \[M1, D1, M2, D2, ..., MN, DN, W2, W3, ..., WN\]
 
 where Mk is the median of the kth logistic mode, Dk is the distance from the median to the 75th percentile point of the kth logistic mode, and Wk is the softmax weight of the kth logistic mode. In other words, the actual weight of the kth mode in the convex combination is given by exp(Wk)/(sum of exp(Wi) over all modes i) where W1 = 0 by assumption.
+
+There may be initialization problems and vanishing/exploding gradient problems with the gradient-based optimizer which I haven't spent the time to fix. If your specific problem suffers from this issue, you should prefer to use the Powell optimizer instead, which generally doesn't suffer from the same issues.
